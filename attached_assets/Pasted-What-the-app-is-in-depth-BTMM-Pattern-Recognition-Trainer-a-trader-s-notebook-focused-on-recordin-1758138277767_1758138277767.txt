@@ -1,0 +1,116 @@
+What the app is, in depth
+BTMM Pattern Recognition Trainer: a trader’s notebook focused on recording only “winning” trades, extracting repeatable confluences, and building a searchable, visual case‑study library to accelerate pattern recognition and execution confidence.
+Core objects and fields
+Trade (a “winning setup” snapshot)
+Required: date, session (Asian/London/New York), pair, patternType (Type 1–4), pips, timestamp
+Bias-first: biasLevel (1–3), EMA crossovers (5/13, 13/50, 50/200, 200/800, 50/800), ADR(5), todayRange
+Confluences: grouped per pattern (e.g., “Stop hunt above Asian range”, “Railroad Tracks”, “ADR completion”)
+Media: imageUrl (legacy single), images[] with { id, timeframe, url } for multi-timeframe uploads
+Notes: free-form observations
+Generated description: human-readable summary built from selected confluences and bias inputs
+Lesson (a “case study”)
+title, session, patternType, tags (comma-separated), imageUrl, notes, timestamp
+End-to-end workflow
+1) Capture
+Click “Add Winning Trade”
+Fill bias-first fields, confluences, and upload a screenshot (single or per timeframe: Monthly → 1M)
+The app compresses images in the browser to keep uploads snappy
+A description string is auto-generated from your inputs (bias + confluence selections)
+Save: the trade is persisted locally; if cloud is connected, it also upserts to your DB
+2) Organize & review
+Filter by date, session, pattern type; search text across pair/description/notes; sort by time/pips/etc.
+Stats cards (winners count, average pips, best pattern) update as your library grows
+The list is virtualized to stay fast with thousands of records
+Click images to open a lightbox for quick zoom; expand a trade for selected confluences and notes
+3) Build case studies
+“Add Lesson”: one image + structured notes and tags (e.g., “HOD sweep, Type1”)
+Lessons appear in a separate section to encourage spaced repetition and recall
+Local-first data model and sync
+Offline/local persistence
+IndexedDB KV store (“btmm-db”) saves trades and lessons for fast, offline use
+Import/Export JSON to backup or move data across machines
+Optional cloud (Supabase)
+Connect via “Supabase Connection” (anon key only, safe for client-side)
+On connect:
+Trades and lessons upsert to your tables, keyed by id (if user is signed in, user_id is set)
+Screenshots uploaded to storage buckets (e.g., trade-images, lesson-images); URLs are made public and stored back on the record
+Magic-link auth: email OTP to associate records with a user (optional)
+Merge semantics
+Import merges by id, choosing the most recently updated record
+Cloud sync upserts and won’t “fan out” duplicates
+Bias-first approach and generated description
+You first declare “what the market is doing” (bias level, EMA alignment, ADR context), then check confluences that confirm a pattern
+The app synthesizes these into natural language:
+Example: “Bias Level: 2 | EMA: 13/50, 50/200 | ADR5: 90 | Range: 135 (1.50x). Type 1 safety trade… Railroad Tracks at apex… targeting ADR completion…”
+This enforces a consistent mental model and reduces retrospective bias
+Image handling and performance
+Client-side JPEG compression (default width 1600px, quality 0.8) before saving/upload
+Multi-timeframe support: attach multiple charts (e.g., H4, H1, M15) under one trade
+Virtualized list (TanStack Virtual) for smooth scrolling with large datasets
+UI map (where things live)
+src/BTMMTradeAnalyzer.jsx: main screen (filters, stats, trades list, modals, scanner)
+Trades UI: src/features/trades/components/*
+TradeCard.jsx, TradeModal.jsx, Filters.jsx, StatsBar.jsx
+Case studies: src/features/case-studies/components/*
+CaseStudyCard.jsx, CaseStudyModal.jsx
+Supabase: src/features/supabase/components/SupabaseSettingsModal.jsx
+Auth: src/features/auth/components/AuthModal.jsx
+Shared UI: src/shared/ui/ImageLightbox.jsx
+Scanner: src/features/scanner/components/ScannerPanel.jsx
+Scanner (TradingView) design
+Frontend panel lets you choose columns (e.g., name, close, volume) and constraints (market cap min/max, limit)
+Intended backend: serverless endpoint /api/screener that uses the TradingView-Screener package to query TV’s endpoint and return JSON rows
+In production, set “Base URL” in the panel to your Vercel domain and click Run Scan (works once the function is re-enabled)
+Reference: https://github.com/shner-elmo/TradingView-Screener
+Import/Export format
+Export creates a JSON array of trades (and a separate array for lessons if implemented)
+Example trade object (simplified, keys may be null/absent if not used):
+id, date, session, patternType, pair, pips, timestamp
+biasLevel, emaCrosses { '13/50': true, … }, adr5, todayRange
+confluences { 'Stop hunt above Asia': true, … }
+imageUrl (legacy) OR images[] with { id, timeframe, url }
+notes, description, createdAt, updatedAt
+Keyboard shortcuts
+n: open “Add Winning Trade”
+/: focus search bar
+Esc: close open modals (trade, auth, supabase)
+Ctrl/Cmd + Enter: save when editing
+PWA & dev ergonomics
+PWA: installable and auto-update prompt in production
+Dev: service worker disabled/unregistered to avoid stale bundles during HMR
+Deployment & DevOps
+Vercel (frontend live now):
+SPA routing fixed (filesystem handle before fallback)
+Production URL provided; GitHub is connected for “push to deploy”
+CI and code quality
+GitHub Actions: install → lint → build
+Husky + lint-staged: Prettier and ESLint run on staged files
+Prettier config: .prettierrc.json
+Project scripts
+npm run dev, npm run build, npm run preview, npm run lint, npm run format
+How to use it effectively (trading workflow)
+Immediately after a winning trade:
+Record context while memory is fresh (session timing, levels swept, candlestick confirmation)
+Attach annotated screenshots (multi-timeframe if possible)
+Check confluences that were present; add notes on “what gave conviction”
+Weekly review:
+Filter by pattern type; scan Stats (e.g., “Type 1 wins dominate London”)
+Revisit case studies; tag themes (“Brinks timing”, “ADR completion”, “50 EMA bounce”)
+Identify “A+ tells” you’ll demand before entry next week
+Extensibility roadmap (easy additions)
+Tags and saved filters: one-click recall of your favorite queries
+Outcome analysis (optionally allow “Loss/Breakeven” to study negatives)
+More pattern families (beyond Type 1–4) and tailored confluence packs
+Cloud multi‑user mode: require auth and set row-level security in Supabase
+Scanner presets (e.g., liquidity scan, relative volume filters) and CSV export
+Troubleshooting
+Don’t see new UI:
+Hard refresh (Ctrl+F5); in dev we unregister the service worker
+Images not saving to cloud:
+Ensure buckets exist and are public; verify anon key; check console for upload errors
+Import errors:
+Validate JSON; the importer expects an array of trade objects with unique ids
+If you want, I can:
+Wire Supabase now (tables + buckets), set env vars in Vercel, and enable cloud sync
+Re-enable the /api/screener function with Python 3.11 and hook the Scanner panel to live data
+Add outcome analytics (e.g., distribution of pips by pattern/session) and export to CS
