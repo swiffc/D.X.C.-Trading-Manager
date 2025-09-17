@@ -22,15 +22,16 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { TradeCard } from './trade-card'
-import { WeeklyDailyBias } from './weekly-daily-bias'
-import { AdvancedPatterns } from './advanced-patterns'
-import { KeyLevels } from './key-levels'
-import { RiskCalculator } from './risk-calculator'
-import { SessionTiming } from './session-timing'
-import { ExecutionChecklist } from './execution-checklist'
-import { TDIIntegration } from './tdi-integration'
+import WeeklyDailyBias from './weekly-daily-bias'
+import AdvancedPatterns from './advanced-patterns'
+import KeyLevels from './key-levels'
+import RiskCalculator from './risk-calculator'
+import SessionTiming from './session-timing'
+import ExecutionChecklist from './execution-checklist'
+import TDIIntegration from './tdi-integration'
 import TradingGuide from '../pages/TradingGuide'
 import TradingPlan from '../pages/TradingPlan'
+import SmartExecution from '../pages/SmartExecution'
 
 type TradeStatus = 'live' | 'closed-profit' | 'closed-loss' | 'case-study'
 type TradeType = 1 | 2 | 3 | 4
@@ -209,6 +210,8 @@ export function TradingDashboard({
         return <TradingGuide />
       case 'trading-plan':
         return <TradingPlan />
+      case 'smart-execution':
+        return <SmartExecution />
       case 'weekly-daily-bias':
         return <WeeklyDailyBias />
       case 'advanced-patterns':

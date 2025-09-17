@@ -10,6 +10,7 @@ import {
   CheckCircle, Calendar, Zap, TrendingDown, ArrowUp, Settings,
   BookOpen, Timer, DollarSign, Activity, Eye, Brain
 } from 'lucide-react'
+import { PdfImporter } from '@/components/examples/PdfImporter'
 
 const TradingGuide = () => {
   const [activeSection, setActiveSection] = useState('objectives')
@@ -344,6 +345,9 @@ const TradingGuide = () => {
                 </CardContent>
               </Card>
             </div>
+
+            {/* PDF Importer */}
+            <PdfImporter />
           </TabsContent>
 
           {/* Risk Management Tab */}

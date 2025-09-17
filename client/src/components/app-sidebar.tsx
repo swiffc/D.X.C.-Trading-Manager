@@ -19,7 +19,8 @@ import {
   Eye,
   DollarSign,
   Timer,
-  LineChart
+  LineChart,
+  Sparkles
 } from 'lucide-react'
 import {
   Sidebar,
@@ -86,6 +87,7 @@ const mainNavItems = [
 ]
 
 const btmmFeatures = [
+  { title: 'Smart Execution', icon: Sparkles, component: 'smart-execution' },
   { title: 'Weekly/Daily Bias', icon: Calendar, component: 'weekly-daily-bias' },
   { title: 'Advanced Patterns', icon: Brain, component: 'advanced-patterns' },
   { title: 'Key Levels', icon: Eye, component: 'key-levels' },

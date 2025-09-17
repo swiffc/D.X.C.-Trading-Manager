@@ -1,5 +1,5 @@
 import { sql } from "drizzle-orm";
-import { pgTable, text, varchar, integer, decimal, timestamp, jsonb } from "drizzle-orm/pg-core";
+import { pgTable, text, varchar, integer, decimal, timestamp, jsonb, boolean } from "drizzle-orm/pg-core";
 import { relations } from "drizzle-orm";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
@@ -53,6 +53,23 @@ export const screenshots = pgTable("screenshots", {
   uploadedAt: timestamp("uploaded_at").defaultNow(),
 });
 
+// Imported chart assets from PDFs
+export const assets = pgTable("assets", {
+  id: varchar("id").primaryKey().default(sql`gen_random_uuid()`),
+  fileName: text("file_name").notNull(),
+  url: text("url").notNull(),
+  source: text("source").notNull(), // e.g. pdf filename
+  page: integer("page").notNull(),
+  title: text("title").default(""),
+  caption: text("caption").default(""),
+  extractedText: text("extracted_text").default(""),
+  isChart: boolean("is_chart").notNull().default(true),
+  detectedPatterns: jsonb("detected_patterns").default([]), // e.g. ["M", "W", "Half Batman"]
+  width: integer("width").default(0),
+  height: integer("height").default(0),
+  createdAt: timestamp("created_at").defaultNow(),
+});
+
 // Relations
 export const usersRelations = relations(users, ({ many }) => ({
   trades: many(trades),
@@ -73,6 +90,8 @@ export const screenshotsRelations = relations(screenshots, ({ one }) => ({
   }),
 }));
 
+export const assetsRelations = relations(assets, ({ }) => ({}));
+
 // Insert schemas
 export const insertTradeSchema = createInsertSchema(trades).omit({
   id: true,
@@ -91,8 +110,15 @@ export const insertScreenshotSchema = createInsertSchema(screenshots).omit({
   uploadedAt: true,
 });
 
+export const insertAssetSchema = createInsertSchema(assets).omit({
+  id: true,
+  createdAt: true,
+});
+
 // Types
 export type Trade = typeof trades.$inferSelect;
 export type InsertTrade = z.infer<typeof insertTradeSchema>;
 export type Screenshot = typeof screenshots.$inferSelect;
 export type InsertScreenshot = z.infer<typeof insertScreenshotSchema>;
+export type Asset = typeof assets.$inferSelect;
+export type InsertAsset = z.infer<typeof insertAssetSchema>;

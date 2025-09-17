@@ -5,9 +5,12 @@ import {
   type InsertTrade,
   type Screenshot,
   type InsertScreenshot,
+  type Asset,
+  type InsertAsset,
   users,
   trades,
-  screenshots
+  screenshots,
+  assets
 } from "@shared/schema";
 import { db } from "./db";
 import { eq, desc, and } from "drizzle-orm";
@@ -35,9 +38,18 @@ export interface IStorage {
   
   // Convenience methods
   getTradeWithScreenshots(tradeId: string): Promise<(Trade & { screenshots: Screenshot[] }) | undefined>;
+
+  // Asset methods (imported charts)
+  createAsset(asset: InsertAsset): Promise<Asset>;
+  listAssets(): Promise<Asset[]>;
+  listChartAssets(): Promise<Asset[]>;
+  updateAsset(id: string, updates: Partial<InsertAsset>): Promise<Asset | undefined>;
+  deleteAsset(id: string): Promise<boolean>;
 }
 
 export class DatabaseStorage implements IStorage {
+  private inMemoryAssets: Asset[] = []
+
   // User methods
   async getUser(id: string): Promise<User | undefined> {
     const [user] = await db.select().from(users).where(eq(users.id, id));
@@ -145,6 +157,62 @@ export class DatabaseStorage implements IStorage {
       ...trade,
       screenshots: tradeScreenshots,
     };
+  }
+
+  // Asset methods (imported charts)
+  async createAsset(insertAsset: InsertAsset): Promise<Asset> {
+    // Fallback to memory if db is unavailable
+    if (!db) {
+      const asset: Asset = {
+        id: randomUUID(),
+        createdAt: new Date(),
+        ...insertAsset,
+      } as unknown as Asset
+      this.inMemoryAssets.push(asset)
+      return asset
+    }
+    const [asset] = await db.insert(assets).values(insertAsset).returning();
+    return asset
+  }
+
+  async listAssets(): Promise<Asset[]> {
+    if (!db) {
+      return this.inMemoryAssets.sort((a, b) =>
+        new Date(a.createdAt as unknown as string).getTime() - new Date(b.createdAt as unknown as string).getTime()
+      )
+    }
+    return await db.select().from(assets).orderBy(assets.createdAt);
+  }
+
+  async listChartAssets(): Promise<Asset[]> {
+    if (!db) {
+      return this.inMemoryAssets.filter(a => a.isChart).sort((a, b) =>
+        new Date(a.createdAt as unknown as string).getTime() - new Date(b.createdAt as unknown as string).getTime()
+      )
+    }
+    // @ts-expect-error drizzle boolean filter typing quirk
+    return await db.select().from(assets).where(assets.isChart.eq(true)).orderBy(assets.createdAt);
+  }
+
+  async updateAsset(id: string, updates: Partial<InsertAsset>): Promise<Asset | undefined> {
+    if (!db) {
+      const idx = this.inMemoryAssets.findIndex(a => a.id === id)
+      if (idx === -1) return undefined
+      this.inMemoryAssets[idx] = { ...this.inMemoryAssets[idx], ...updates } as Asset
+      return this.inMemoryAssets[idx]
+    }
+    const [asset] = await db.update(assets).set(updates).where(eq(assets.id, id)).returning();
+    return asset || undefined
+  }
+
+  async deleteAsset(id: string): Promise<boolean> {
+    if (!db) {
+      const before = this.inMemoryAssets.length
+      this.inMemoryAssets = this.inMemoryAssets.filter(a => a.id !== id)
+      return this.inMemoryAssets.length < before
+    }
+    const result = await db.delete(assets).where(eq(assets.id, id))
+    return result.rowCount ? result.rowCount > 0 : false
   }
 }
 

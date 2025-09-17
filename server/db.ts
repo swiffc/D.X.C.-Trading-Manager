@@ -5,11 +5,19 @@ import * as schema from "@shared/schema";
 
 neonConfig.webSocketConstructor = ws;
 
-if (!process.env.DATABASE_URL) {
-  throw new Error(
-    "DATABASE_URL must be set. Did you forget to provision a database?",
-  );
+let _pool: Pool | undefined;
+let _db: ReturnType<typeof drizzle> | undefined;
+
+if (process.env.DATABASE_URL) {
+  _pool = new Pool({ connectionString: process.env.DATABASE_URL });
+  // @ts-ignore drizzle neon-serverless type
+  _db = drizzle({ client: _pool, schema });
+  // eslint-disable-next-line no-console
+  console.log('Using Neon/Postgres database connection');
+} else {
+  // eslint-disable-next-line no-console
+  console.warn('DATABASE_URL not set. Falling back to in-memory storage.');
 }
 
-export const pool = new Pool({ connectionString: process.env.DATABASE_URL });
-export const db = drizzle({ client: pool, schema });
+export const pool = _pool as any;
+export const db = _db as any;

@@ -11,6 +11,7 @@ import {
   CheckCircle, BarChart3, Zap, DollarSign, Activity, Eye, 
   Brain, Timer, Settings, BookOpen, LineChart, Compass
 } from 'lucide-react'
+import { ChartExamples } from '@/components/examples/ChartExamples'
 
 const TradingPlan = () => {
   const [activeTab, setActiveTab] = useState('overview')
@@ -448,6 +449,15 @@ const TradingPlan = () => {
                     </div>
                   </div>
                 </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-base">Referenced Chart Examples</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ChartExamples onlyCharts />
               </CardContent>
             </Card>
           </TabsContent>
