@@ -9,6 +9,17 @@ import {
   FolderOpen,
   Plus,
   Home,
+  Brain,
+  Calendar,
+  Shield,
+  Clock,
+  CheckCircle,
+  Target,
+  Zap,
+  Eye,
+  DollarSign,
+  Timer,
+  LineChart
 } from 'lucide-react'
 import {
   Sidebar,
@@ -70,8 +81,24 @@ const tradeTypes: TradeType[] = [
 
 const mainNavItems = [
   { title: 'Dashboard', url: '/', icon: Home },
-  { title: 'Search', url: '/search', icon: Search },
-  { title: 'Settings', url: '/settings', icon: Settings },
+  { title: 'Trading Guide', url: '/guide', icon: BookOpen },
+  { title: 'Trading Plan', url: '/plan', icon: Target },
+]
+
+const btmmFeatures = [
+  { title: 'Weekly/Daily Bias', icon: Calendar, component: 'weekly-daily-bias' },
+  { title: 'Advanced Patterns', icon: Brain, component: 'advanced-patterns' },
+  { title: 'Key Levels', icon: Eye, component: 'key-levels' },
+  { title: 'Risk Calculator', icon: Shield, component: 'risk-calculator' },
+  { title: 'Session Timing', icon: Clock, component: 'session-timing' },
+  { title: 'Execution Checklist', icon: CheckCircle, component: 'execution-checklist' },
+  { title: 'TDI Integration', icon: Zap, component: 'tdi-integration' },
+]
+
+const analysisTools = [
+  { title: 'Pattern Scanner', icon: Search, component: 'pattern-scanner' },
+  { title: 'Performance Analytics', icon: LineChart, component: 'performance-analytics' },
+  { title: 'Trade Journal', icon: FolderOpen, component: 'trade-journal' },
 ]
 
 interface AppSidebarProps {
@@ -79,13 +106,17 @@ interface AppSidebarProps {
   onSectionChange: (section: 'live-trades' | 'case-studies') => void
   selectedTradeType: number | null
   onTradeTypeSelect: (typeId: number | null) => void
+  activeComponent?: string
+  onComponentChange?: (component: string) => void
 }
 
 export function AppSidebar({ 
   activeSection, 
   onSectionChange, 
   selectedTradeType, 
-  onTradeTypeSelect 
+  onTradeTypeSelect,
+  activeComponent,
+  onComponentChange
 }: AppSidebarProps) {
   const [expandedType, setExpandedType] = useState<number | null>(null)
 
@@ -145,6 +176,52 @@ export function AppSidebar({
                 Case Studies
               </Button>
             </div>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        {/* BTMM Features */}
+        <SidebarGroup>
+          <SidebarGroupLabel>BTMM Analysis</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {btmmFeatures.map((feature) => (
+                <SidebarMenuItem key={feature.component}>
+                  <SidebarMenuButton
+                    onClick={() => onComponentChange?.(feature.component)}
+                    data-testid={`btmm-${feature.component}`}
+                    className={`hover-elevate ${
+                      activeComponent === feature.component ? 'bg-sidebar-accent' : ''
+                    }`}
+                  >
+                    <feature.icon className="h-4 w-4" />
+                    <span className="text-sm">{feature.title}</span>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+
+        {/* Analysis Tools */}
+        <SidebarGroup>
+          <SidebarGroupLabel>Analysis Tools</SidebarGroupLabel>
+          <SidebarGroupContent>
+            <SidebarMenu>
+              {analysisTools.map((tool) => (
+                <SidebarMenuItem key={tool.component}>
+                  <SidebarMenuButton
+                    onClick={() => onComponentChange?.(tool.component)}
+                    data-testid={`tool-${tool.component}`}
+                    className={`hover-elevate ${
+                      activeComponent === tool.component ? 'bg-sidebar-accent' : ''
+                    }`}
+                  >
+                    <tool.icon className="h-4 w-4" />
+                    <span className="text-sm">{tool.title}</span>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              ))}
+            </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>
 

@@ -22,6 +22,15 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { TradeCard } from './trade-card'
+import { WeeklyDailyBias } from './weekly-daily-bias'
+import { AdvancedPatterns } from './advanced-patterns'
+import { KeyLevels } from './key-levels'
+import { RiskCalculator } from './risk-calculator'
+import { SessionTiming } from './session-timing'
+import { ExecutionChecklist } from './execution-checklist'
+import { TDIIntegration } from './tdi-integration'
+import TradingGuide from '../pages/TradingGuide'
+import TradingPlan from '../pages/TradingPlan'
 
 type TradeStatus = 'live' | 'closed-profit' | 'closed-loss' | 'case-study'
 type TradeType = 1 | 2 | 3 | 4
@@ -49,6 +58,7 @@ interface TradingDashboardProps {
   activeSection: 'live-trades' | 'case-studies'
   selectedTradeType: number | null
   onNewTrade: () => void
+  activeComponent?: string
 }
 
 // Mock data for demonstration
@@ -132,6 +142,7 @@ export function TradingDashboard({
   activeSection,
   selectedTradeType,
   onNewTrade,
+  activeComponent = 'dashboard',
 }: TradingDashboardProps) {
   const [searchTerm, setSearchTerm] = useState('')
   const [viewMode, setViewMode] = useState<ViewMode>('grid')
@@ -188,12 +199,38 @@ export function TradingDashboard({
   }
 
   const handleTradeAction = (action: string, trade?: Trade) => {
-    console.log(`${action} action:`, trade?.id || 'new')
-    // These will be implemented with actual functionality
+    console.log(`${action} trade:`, trade)
   }
 
-  return (
-    <div className="flex flex-col h-full p-6 space-y-6">
+  // Render specific BTMM component based on activeComponent
+  const renderComponent = () => {
+    switch (activeComponent) {
+      case 'trading-guide':
+        return <TradingGuide />
+      case 'trading-plan':
+        return <TradingPlan />
+      case 'weekly-daily-bias':
+        return <WeeklyDailyBias />
+      case 'advanced-patterns':
+        return <AdvancedPatterns />
+      case 'key-levels':
+        return <KeyLevels />
+      case 'risk-calculator':
+        return <RiskCalculator />
+      case 'session-timing':
+        return <SessionTiming />
+      case 'execution-checklist':
+        return <ExecutionChecklist />
+      case 'tdi-integration':
+        return <TDIIntegration />
+      case 'dashboard':
+      default:
+        return renderDashboard()
+    }
+  }
+
+  const renderDashboard = () => (
+    <div className="flex flex-col h-full space-y-6 p-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
@@ -423,4 +460,6 @@ export function TradingDashboard({
       </div>
     </div>
   )
+
+  return renderComponent()
 }

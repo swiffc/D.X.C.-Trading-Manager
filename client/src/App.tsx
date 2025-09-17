@@ -27,6 +27,7 @@ function App() {
   const [activeSection, setActiveSection] = useState<'live-trades' | 'case-studies'>('live-trades')
   const [selectedTradeType, setSelectedTradeType] = useState<number | null>(null)
   const [showTradeForm, setShowTradeForm] = useState(false)
+  const [activeComponent, setActiveComponent] = useState<string>('dashboard')
 
   const handleNewTrade = () => {
     setShowTradeForm(true)
@@ -49,6 +50,8 @@ function App() {
                 onSectionChange={setActiveSection}
                 selectedTradeType={selectedTradeType}
                 onTradeTypeSelect={setSelectedTradeType}
+                activeComponent={activeComponent}
+                onComponentChange={setActiveComponent}
               />
               <div className="flex flex-col flex-1">
                 <header className="flex items-center justify-between p-2 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -62,6 +65,7 @@ function App() {
                     activeSection={activeSection}
                     selectedTradeType={selectedTradeType}
                     onNewTrade={handleNewTrade}
+                    activeComponent={activeComponent}
                   />
                 </main>
               </div>
