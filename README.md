@@ -248,18 +248,83 @@ Bias Level: 2 | EMA: 13/50, 50/200 | ADR5: 90 | Range: 135 (1.50x ADR)
 
 ## 🎛️ Advanced Features
 
-### Confluence Categories & Options
+### 🚀 NEW: Enhanced BTMM Components (2024 Update)
+
+#### Advanced Pattern Recognition System
+**M&W Pattern Detection:**
+- M&W with 13 EMA Consolidation (8+ candle ranges)
+- M&W off 200 EMA (Mayo/Water confluence)
+- 2nd Leg Out of Asia (London session entries)
+- Real-time pattern validation with confidence scoring
+
+**Half Batman Pattern Analysis:**
+- Outside structure identification
+- Apex formation detection
+- Shift candle validation
+- TDI confirmation integration
+
+**ID50 Safety Patterns:**
+- Inside Day 50 EMA bounce detection
+- Anchor presence validation
+- 13/50 EMA crossover analysis
+- Multi-timeframe confluence
+
+#### Key Level Detection System
+**Automatic Level Identification:**
+- Previous Day High/Low (PDH/PDL) with strength analysis
+- Yesterday High/Low (YH/YL) blue tracer levels
+- High/Low of Day (HOD/LOD) dynamic tracking
+- Average Daily Range (ADR5) calculations
+- Asian session range boundaries
+- London open level detection
+
+**Level Analysis Features:**
+- Distance from current price calculations
+- Historical test count tracking
+- Level strength classification (weak/medium/strong)
+- Confluence detection with EMAs
+- ADR completion analysis
+
+#### Risk Management Calculator
+**Position Sizing & Risk Analysis:**
+- Account size-based position calculations
+- 2:1 minimum risk-reward enforcement
+- Stop loss placement optimization
+- Take profit target analysis
+- Real-time P&L projections
+- Risk percentage validation
+
+#### Session Timing System
+**Brinks Timing Implementation:**
+- 9:45 PM EST (Asian Open)
+- 3:45 AM EST (London Pre-Market)
+- 9:45 AM EST (New York Open)
+- Live session progress tracking
+- Stop hunt warning system
+- Session transition alerts
+
+**Trading Session Analysis:**
+- Asian Session: 6:00 PM - 3:00 AM EST
+- London Session: 3:00 AM - 12:00 PM EST
+- New York Session: 8:00 AM - 5:00 PM EST
+- Session overlap identification
+- Volatility window tracking
+
+#### Comprehensive Trading Guide
+**Interactive Educational System:**
+- Complete BTMM methodology documentation
+- Step-by-step pattern recognition training
+- Risk management best practices
+- Session timing strategies
+- Execution checklist workflows
+- Real-time market analysis tools
+
+### Legacy Confluence Categories & Options
 
 **EMA Rules & Interactions:**
 - 5/13, 13/50, 50/200, 200/800, 50/800 crossovers
 - Full respect vs. tap vs. no-touch scenarios
 - Dynamic vs. static EMA interactions
-
-**Session Timing Analysis:**
-- Asian Session (evening): 6:00 PM - 3:00 AM EST
-- London Session: 3:00 AM - 12:00 PM EST  
-- New York Session: 8:00 AM - 5:00 PM EST
-- Brinks timing: 9:45 PM, 3:45 AM, 9:45 AM EST
 
 **Pattern Recognition:**
 - Railroad Tracks (reversal candlestick pattern)
@@ -288,6 +353,39 @@ Only after declaring bias can traders select supporting confluences, ensuring:
 - Reduced retrospective bias
 - Consistent evaluation criteria
 - Repeatable pattern recognition
+
+## 🔧 Component Architecture
+
+### New BTMM Enhancement Components
+
+```typescript
+// Advanced Pattern Recognition
+client/src/components/
+├── advanced-patterns.tsx     # M&W, Half Batman, ID50 pattern detection
+├── key-levels.tsx           # PDH/PDL, YH/YL, HOD/LOD analysis
+├── risk-calculator.tsx      # Position sizing & R:R calculations
+├── session-timing.tsx       # Brinks timing & session analysis
+└── weekly-daily-bias.tsx    # Day 2/3 bias & preparation tools
+
+// Enhanced Trading Guide
+client/src/pages/
+└── TradingGuide.tsx         # Comprehensive BTMM methodology guide
+```
+
+### Integration Status
+
+✅ **Completed Components:**
+- Advanced Pattern Recognition (M&W, Half Batman, ID50)
+- Key Level Detection System (PDH/PDL, YH/YL, HOD/LOD)
+- Risk Management Calculator (2:1 RR, position sizing)
+- Session Timing System (Brinks timing, stop hunt alerts)
+- Comprehensive Trading Guide (interactive methodology)
+
+🚧 **In Development:**
+- Weekly/Daily Bias Dashboard
+- Execution Checklist Workflow
+- TDI Indicator Integration
+- Real-time market data feeds
 
 ## 💾 Data Management & Storage
 
