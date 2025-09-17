@@ -37,7 +37,7 @@ import { useToast } from '@/hooks/use-toast'
 import { apiRequest } from '@/lib/queryClient'
 import { Save, X, Loader2 } from 'lucide-react'
 
-// Form validation schema
+// Form validation schema  
 const tradeFormSchema = z.object({
   title: z.string().min(1, 'Title is required').max(100, 'Title too long'),
   pair: z.string().min(1, 'Currency pair is required'),
@@ -49,6 +49,11 @@ const tradeFormSchema = z.object({
   timeframe: z.string().min(1, 'Timeframe is required'),
   session: z.string().optional(),
   notes: z.string().default(''),
+  // Bias-first fields for BTMM methodology
+  biasLevel: z.coerce.number().int().min(1).max(3).optional(),
+  emaCrossovers: z.array(z.string()).default([]),
+  adr5: z.string().optional(),
+  todayRange: z.string().optional(),
 })
 
 type TradeFormData = z.infer<typeof tradeFormSchema>
@@ -89,25 +94,111 @@ const timeframes = [
 const sessions = ['Asian', 'London', 'New York', 'Pacific']
 
 const tradeTypeLabels = {
-  1: 'Type 1: M/W Patterns',
-  2: 'Type 2: Asian Bounce',
-  3: 'Type 3: EMA Bounce',
-  4: 'Type 4: Custom Setup',
+  1: 'Type 1: M/W Patterns above/below Asian session (Safety Trade)',
+  2: 'Type 2: Asian 00 bounce and reverse trades',
+  3: 'Type 3: Asian 50 Bounce and reverse trades',
+  4: 'Type 4: Breakout, bounce off Asian 00 then continuation trades',
 }
 
-// Generate automated notes based on confluences
-function generateAutomatedNotes(confluences: string[], tradeType: number): string {
-  if (confluences.length === 0) return ''
+const emaCrossoverLabels = {
+  '5/13': '5/13 EMA cross',
+  '13/50': '13/50 EMA cross',
+  '50/200': '50/200 EMA cross', 
+  '200/800': '200/800 EMA cross',
+  '50/800': '50/800 EMA cross',
+}
+
+// Enhanced automated note generation using BTMM bias-first methodology
+function generateEnhancedNotes(
+  confluences: string[], 
+  tradeType: number,
+  biasLevel?: number,
+  emaCrossovers?: string[],
+  adr5?: string,
+  todayRange?: string
+): string {
+  let notes = ''
   
+  // Bias-first section (market context)
+  if (biasLevel || emaCrossovers?.length || adr5 || todayRange) {
+    notes += '📊 BIAS-FIRST ANALYSIS:\n'
+    
+    if (biasLevel) {
+      notes += `Bias Level: ${biasLevel} | `
+    }
+    
+    if (emaCrossovers?.length) {
+      const crossoverText = emaCrossovers.map(cross => emaCrossoverLabels[cross as keyof typeof emaCrossoverLabels] || cross).join(', ')
+      notes += `EMA: ${crossoverText} | `
+    }
+    
+    if (adr5) {
+      notes += `ADR5: ${adr5} | `
+    }
+    
+    if (todayRange && adr5) {
+      const rangeRatio = (parseFloat(todayRange) / parseFloat(adr5)).toFixed(2)
+      notes += `Range: ${todayRange} (${rangeRatio}x ADR)`
+    } else if (todayRange) {
+      notes += `Today's Range: ${todayRange}`
+    }
+    
+    notes += '\n\n'
+  }
+  
+  // Pattern-specific setup description
   const typeLabel = tradeTypeLabels[tradeType as keyof typeof tradeTypeLabels]
+  notes += `🎯 SETUP: ${typeLabel}\n\n`
   
-  let notes = `${typeLabel} setup with ${confluences.length} confluence${confluences.length > 1 ? 's' : ''}:\n\n`
+  // Confluences with pattern context
+  if (confluences.length > 0) {
+    notes += `✅ CONFLUENCES (${confluences.length}):\n`
+    
+    confluences.forEach(confluence => {
+      // Transform confluence IDs to readable labels
+      let label = confluence
+      if (confluence.includes('railroad-tracks')) {
+        label = '🚂 Railroad Tracks at apex'
+      } else if (confluence.includes('morning-star') || confluence.includes('morning-evening-star')) {
+        label = '⭐ Morning/Evening Star confirmation'
+      } else if (confluence.includes('13-ema-respect')) {
+        label = '📈 13 EMA Full Respect - both legs'
+      } else if (confluence.includes('stop-hunt-asian')) {
+        label = '🎣 Stop hunt above Asian range'
+      } else if (confluence.includes('adr-completion')) {
+        label = '🎯 Targeting ADR completion'
+      } else if (confluence.includes('50-ema-bounce')) {
+        label = '📊 50 EMA bounce setup'
+      } else if (confluence.includes('asian-00-bounce')) {
+        label = '🌏 Asian 00 boundary bounce'
+      } else if (confluence.includes('brinks-timing')) {
+        label = '⏰ Brinks timing alignment'
+      } else {
+        // Clean up the ID format
+        label = confluence.replace(/-/g, ' ').replace(/type\d+\s+/g, '').replace(/^\w/, c => c.toUpperCase())
+      }
+      
+      notes += `  • ${label}\n`
+    })
+    notes += '\n'
+  }
   
-  confluences.forEach(confluence => {
-    notes += `✓ ${confluence}\n`
-  })
+  // Template sections
+  notes += '📋 EXECUTION PLAN:\n'
+  notes += '  Entry: [Price level and trigger]\n'
+  notes += '  Stop Loss: [Risk management level]\n'
+  notes += '  Target: [Profit objective]\n'
+  notes += '  Risk/Reward: [R:R ratio]\n\n'
   
-  notes += '\nEntry strategy: [Add your entry details]\nRisk management: [Add stop loss and target levels]\nMarket conditions: [Add market context]'
+  notes += '🔍 MARKET CONDITIONS:\n'
+  notes += '  Session: [Active trading session]\n'
+  notes += '  Volatility: [Market environment]\n'
+  notes += '  Structure: [Higher timeframe context]\n\n'
+  
+  notes += '💡 KEY OBSERVATIONS:\n'
+  notes += '  [What gave conviction for this trade?]\n'
+  notes += '  [Any additional confluence factors?]\n'
+  notes += '  [Session timing relevance?]'
   
   return notes
 }
@@ -132,15 +223,30 @@ export function TradeForm({ open, onClose, mode, defaultTradeType = null }: Trad
       timeframe: 'H1',
       session: '',
       notes: '',
+      biasLevel: undefined,
+      emaCrossovers: [],
+      adr5: '',
+      todayRange: '',
     },
   })
 
   const watchedTradeType = form.watch('tradeType')
+  const watchedBiasLevel = form.watch('biasLevel')
+  const watchedEmaCrossovers = form.watch('emaCrossovers')
+  const watchedAdr5 = form.watch('adr5')
+  const watchedTodayRange = form.watch('todayRange')
   
-  // Auto-generate notes when confluences or trade type changes
+  // Auto-generate notes with enhanced BTMM methodology
   const autoGeneratedNotes = useMemo(() => {
-    return generateAutomatedNotes(selectedConfluences, watchedTradeType)
-  }, [selectedConfluences, watchedTradeType])
+    return generateEnhancedNotes(
+      selectedConfluences, 
+      watchedTradeType,
+      watchedBiasLevel,
+      watchedEmaCrossovers,
+      watchedAdr5,
+      watchedTodayRange
+    )
+  }, [selectedConfluences, watchedTradeType, watchedBiasLevel, watchedEmaCrossovers, watchedAdr5, watchedTodayRange])
 
   const createTradeMutation = useMutation({
     mutationFn: async (data: TradeFormData & { 
@@ -372,6 +478,145 @@ export function TradeForm({ open, onClose, mode, defaultTradeType = null }: Trad
                         </FormItem>
                       )}
                     />
+                  </div>
+
+                  {/* Bias-First Analysis Fields */}
+                  <div className="border-t pt-4 mt-6">
+                    <h3 className="text-sm font-medium text-foreground mb-4">📊 Bias-First Analysis</h3>
+                    
+                    <div className="grid grid-cols-2 gap-4 mb-4">
+                      <FormField
+                        control={form.control}
+                        name="biasLevel"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Bias Level (1-3)</FormLabel>
+                            <Select 
+                              onValueChange={(value) => field.onChange(value ? parseInt(value) : undefined)} 
+                              value={field.value?.toString() || ""}
+                            >
+                              <FormControl>
+                                <SelectTrigger data-testid="select-bias-level">
+                                  <SelectValue placeholder="Select bias strength" />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent>
+                                <SelectItem value="1">Level 1 - Weak Bias</SelectItem>
+                                <SelectItem value="2">Level 2 - Moderate Bias</SelectItem>
+                                <SelectItem value="3">Level 3 - Strong Bias</SelectItem>
+                              </SelectContent>
+                            </Select>
+                            <FormDescription>Market bias strength assessment</FormDescription>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name="session"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Trading Session</FormLabel>
+                            <Select onValueChange={field.onChange} value={field.value || ""}>
+                              <FormControl>
+                                <SelectTrigger data-testid="select-session">
+                                  <SelectValue placeholder="Select session" />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent>
+                                {sessions.map(session => (
+                                  <SelectItem key={session} value={session}>{session}</SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                    </div>
+
+                    <div className="space-y-4">
+                      <FormField
+                        control={form.control}
+                        name="emaCrossovers"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>EMA Crossovers</FormLabel>
+                            <FormDescription>Select active EMA crossovers observed</FormDescription>
+                            <div className="grid grid-cols-5 gap-2 mt-2">
+                              {Object.entries(emaCrossoverLabels).map(([key, label]) => (
+                                <div key={key} className="flex items-center space-x-2">
+                                  <input
+                                    type="checkbox"
+                                    id={`ema-${key}`}
+                                    checked={field.value?.includes(key) || false}
+                                    onChange={(e) => {
+                                      const current = field.value || []
+                                      if (e.target.checked) {
+                                        field.onChange([...current, key])
+                                      } else {
+                                        field.onChange(current.filter(item => item !== key))
+                                      }
+                                    }}
+                                    className="rounded border-gray-300 text-primary focus:ring-primary"
+                                    data-testid={`checkbox-ema-${key}`}
+                                  />
+                                  <label htmlFor={`ema-${key}`} className="text-xs cursor-pointer">
+                                    {key}
+                                  </label>
+                                </div>
+                              ))}
+                            </div>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <div className="grid grid-cols-2 gap-4">
+                        <FormField
+                          control={form.control}
+                          name="adr5"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>ADR5 (5-Day Average)</FormLabel>
+                              <FormControl>
+                                <Input
+                                  type="number"
+                                  step="0.1"
+                                  placeholder="90.5"
+                                  {...field}
+                                  data-testid="input-adr5"
+                                />
+                              </FormControl>
+                              <FormDescription>Average daily range in pips</FormDescription>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+
+                        <FormField
+                          control={form.control}
+                          name="todayRange"
+                          render={({ field }) => (
+                            <FormItem>
+                              <FormLabel>Today's Range</FormLabel>
+                              <FormControl>
+                                <Input
+                                  type="number"
+                                  step="0.1"
+                                  placeholder="135.0"
+                                  {...field}
+                                  data-testid="input-today-range"
+                                />
+                              </FormControl>
+                              <FormDescription>Current range in pips</FormDescription>
+                              <FormMessage />
+                            </FormItem>
+                          )}
+                        />
+                      </div>
+                    </div>
                   </div>
 
                   {mode === 'live-trades' && (

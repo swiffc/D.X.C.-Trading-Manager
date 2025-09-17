@@ -40,6 +40,11 @@ interface Trade {
   confluences: string[]
   notes: string
   session?: string
+  // New bias-first fields
+  biasLevel?: number
+  emaCrossovers?: string[]
+  adr5?: string
+  todayRange?: string
 }
 
 interface TradeCardProps {
@@ -54,6 +59,13 @@ const tradeTypeColors: Record<TradeType, string> = {
   2: 'bg-trading-type2', 
   3: 'bg-trading-type3',
   4: 'bg-trading-type4',
+}
+
+const tradeTypeLabels: Record<TradeType, string> = {
+  1: 'Type 1: M/W Patterns',
+  2: 'Type 2: Asian Bounce',
+  3: 'Type 3: EMA Bounce',
+  4: 'Type 4: Custom Setup',
 }
 
 const statusColors: Record<TradeStatus, string> = {
@@ -94,6 +106,13 @@ export function TradeCard({ trade, onView, onEdit, onDelete }: TradeCardProps) {
               {trade.title}
             </CardTitle>
             <div className="flex items-center gap-2 mt-1">
+              <Badge 
+                variant="secondary" 
+                className="text-xs"
+                data-testid={`badge-trade-type-${trade.tradeType}`}
+              >
+                {tradeTypeLabels[trade.tradeType]}
+              </Badge>
               <Badge 
                 variant="secondary" 
                 className="text-xs"
@@ -219,6 +238,22 @@ export function TradeCard({ trade, onView, onEdit, onDelete }: TradeCardProps) {
                     +{trade.confluences.length - 3} more
                   </Badge>
                 )}
+              </div>
+            </div>
+          )}
+
+          {/* Bias-First Analysis */}
+          {(trade.biasLevel || trade.emaCrossovers?.length || trade.adr5 || trade.todayRange) && (
+            <div className="space-y-1">
+              <p className="text-xs font-medium text-muted-foreground">📊 Bias Analysis:</p>
+              <div className="text-xs text-muted-foreground">
+                {trade.biasLevel && `Bias: L${trade.biasLevel}`}
+                {trade.emaCrossovers?.length && ` | EMA: ${trade.emaCrossovers.join(', ')}`}
+                {trade.adr5 && ` | ADR5: ${trade.adr5}`}
+                {trade.todayRange && trade.adr5 && (
+                  ` | Range: ${trade.todayRange} (${(parseFloat(trade.todayRange) / parseFloat(trade.adr5)).toFixed(2)}x)`
+                )}
+                {trade.todayRange && !trade.adr5 && ` | Range: ${trade.todayRange}`}
               </div>
             </div>
           )}
