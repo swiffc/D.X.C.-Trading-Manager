@@ -7,6 +7,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
 import { AppSidebar } from "@/components/app-sidebar"
 import { TradingDashboard } from "@/components/trading-dashboard"
+import { TradeForm } from "@/components/trade-form"
 import { ThemeProvider } from "@/components/ui/theme-provider"
 import { ThemeToggle } from "@/components/ui/theme-toggle"
 import NotFound from "@/pages/not-found";
@@ -25,10 +26,10 @@ function Router() {
 function App() {
   const [activeSection, setActiveSection] = useState<'live-trades' | 'case-studies'>('live-trades')
   const [selectedTradeType, setSelectedTradeType] = useState<number | null>(null)
+  const [showTradeForm, setShowTradeForm] = useState(false)
 
   const handleNewTrade = () => {
-    console.log('New trade/study creation')
-    // This will be implemented with a modal or form
+    setShowTradeForm(true)
   }
 
   // Custom sidebar width for trading application
@@ -65,6 +66,14 @@ function App() {
                 </main>
               </div>
             </div>
+            
+            {/* Trade Form Modal */}
+            <TradeForm
+              open={showTradeForm}
+              onClose={() => setShowTradeForm(false)}
+              mode={activeSection}
+              defaultTradeType={selectedTradeType}
+            />
           </SidebarProvider>
           <Toaster />
         </ThemeProvider>
