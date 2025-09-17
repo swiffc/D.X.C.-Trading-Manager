@@ -1,0 +1,426 @@
+Comprehensive Trading Plan
+A detailed guide to trading strategies, setups, and risk management.
+Table of Contents
+•	1. Trading Objectives
+•	2. Weekly and Daily Preparation
+•	3. Daily Bias and Draw on Liquidity (DOL)
+•	4. Trade Setups
+•	5. Advanced Ent1y Patterns
+•	6. Risk Management
+•	7. Session Timing
+•	8. Execution Checklist
+1. Trading Objectives
+Primary Goal: Trade in line with the trend and liquidity cycles to achieve consistent profitability.
+Focus: Use Daily Bias, Draw on Liquidity (DOL), and advanced entry patterns to identify high-probability setups.
+2. Weekly and Daily Preparation
+i)	Weekly Cycle:
+•	Day 2 OR (LEVEL A1 SELL SET UP) or (Level V1 BUY SETUP)
+•	FRD/FGD
+•	INSIDE DAY
+•	FALSE BREAK REVERSAL
+•	Session 1 higher high
+•	Session 2 higher low
+•	Session 3 3 pushes into high for false break
+•	reversal
+•	INSIDE DAY
+•	REVERSAL
+•	Session 1 1st push
+•	Session 2 2nd push
+•	Session 3 3 pushes and break in structure and
+•	a 123 for the reversal
+•	DAY 3 Level A2 SELL SETUP or Level V2 Sell SETUP
+•	DAY 3 BREAKOUTS
+•	———————————————————————————————————
+•	HOD/LOD ( HOM/HOW, LOM/LOW )
+•	is high:low locked in?
+•	Is session high:low locked in ?tify Key Levels:
+•	
+o	Previous Day High/Low (PDH/PDL)
+o	Yearly High/Low (YH/YL)
+o	Average Daily Range (ADR) boundaries
+•	Avoid trading against D1 zone flips to align with the higher timeframe trend. 
+•	 
+•	 
+ii)	Daily Pattern:
+•	Monitor the daily cycle for potential reversals or continuations.
+•	Use the Asian session range as a reference for liquidity sweeps.
+  
+  
+ 
+📊 3. Bias & Trade Setup
+Use this section to determine your daily bias and optimal trade setup based on BTMM and Stacey Burke logic.
+Day 2 (Level A1 Sell or Level V1 Buy Setup):
+• FRD/FGD (First Red/Green Day)
+• Inside Day
+• False Break Reversal
+• Session 1: Higher high
+• Session 2: Higher low
+• Session 3: Three pushes into high for false break and reversal
+Inside Day Reversal:
+• Session 1: 1st push
+• Session 2: 2nd push
+• Session 3: 3rd push, break in structure, and a 1-2-3 for the reversal
+Day 3 (Level A2 Sell or Level V2 Sell Setup):
+• Day 3 Breakouts
+
+Bias Checklist:
+• HOD/LOD (HOM/HOW, LOM/LOW): Is high/low locked in?
+• Is session high/low locked in?
+
+  
+  
+A.	Bullish Cycle
+a.	   
+
+4. Session Timing – (STOP HUNT → TRAP → TRADE)
+💡 Practical Tips for Timing
+•	⏳ Patience is key: Wait for price to hit key levels at the right time (session open, Brinks times, reversal windows).
+•	🚫 Avoid trading during low liquidity: Late Asia session and midday NY session often have erratic price action.
+•	✅ Use timing with price action: Confirm entries with candlestick patterns, M/W patterns, or rejection candles during timing windows.
+
+Focus on trading during the following session timings for optimal setups:
+Time	Event/Window	Purpose/Use Case
+5:00 PM – 12:00 AM	Asian Session	Preparation, low liquidity
+2:00 AM – 9:00 AM	London Open	High volatility, reversals, breakouts
+9:30 AM – 5:00 PM	New York Open	Major liquidity, trend continuation/reversal
+9:30 AM – 10:15 AM	Early NY Reversal Window	Liquidity sweeps, stop hunts
+2:00 PM – 3:00 PM	Mid-Afternoon Reversal	Session exhaustion, reversals
+9:45 PM	Brinks Trade Timing	Liquidity spike, precise entries
+3:45 AM	Brinks Trade Timing	Liquidity spike, precise entries
+9:45 AM	Brinks Trade Timing	Liquidity spike, precise entries
+a)	Focus on 9PM,1AM,5PM  & 9PM, 3AM, 9AM where we expect movement
+i.	915 Multiple different TF traders are active at the same time,
+ii.	9PM, 3AM 9PM, THE EQUITY MARKETS OPEN HOUR
+b)	“7PM,1AM,7PM” = HOUR BEFORE the 12-candle window – “STOP HUNT”
+iii.	DO NOT TAKE TRADE HERE!
+i.	33trade - 3 pushes with 123 engulfment’s & pin hammers
+ii.	3 LEVELS OF RISE OR 3 LEVELS OF FALL - (DAYS / SESSIONS)
+iii.	3 BAR REVERSAL / ENGULFMENT / INSIDE BAR / PIN HAMMER /
+5. Trade Setups
+•	AR 00 & AR 50, AR Safety (Lev2, 15 min)
+•	AR and ID Combo(Lev2, 15 min)
+•	M/W ( BB, Water, BT) – Lev3, 15min/1hr/4hr
+•	H&S, ( 3 hits to High or low, 3 drives pattern) – Lev3, 15min/1hr/4hr
+•	12/21/22 Trade (Lev3 BT, 15min/1hr – Multi-day structure)
+•	33 Trade (Lev 3, 15min)
+🔄 Type 1: 🅼🆆 Patterns above/below Asian session (Safety Trade)
+	  
+c)	✅ Type 1a: Full 13 EMA Rules 📈
+•	📝 Rules:
+o	Both legs strictly respect the 13 EMA; no break or violation is allowed.
+o	The apex forms with a clean rejection candlestick pattern.
+•	📍 Optimal Location:
+o	Found at session High of Day (HOD) or Low of Day (LOD).
+o	PSH/PSL, PDH/PDL, PWH/PWL, PMH/PML, PYH/PYL or 5-day averaged ADR levels.
+•	🎯 Use Case:
+o	Ideal in trending markets where clear structure is maintained.
+d)	✅ Type 1b: 13 EMA Tap 🔄
+•	📝 Rules:
+o	The first leg taps the 13 EMA but does not break it.
+o	The second leg forms a rejection candlestick pattern (e.g., Morning Star, Railroad Tracks).
+•	📍 Optimal Location:
+o	During session timings:
+o	Brinks Trade: ⏰ 9:45 PM, 3:45 AM, 9:45 AM EST.
+o	London/NY session extremes.
+o	Key reversal levels: PSH/PSL, PDH/PDL, PWH/PWL, PMH/PML, PYH/PYL or 5 day averaged ADR levels., or Level 3 areas in BTMM methodology.
+•	🎯 Use Case:
+o	Found during consolidation or when liquidity sweeps align with key EMAs.
+
+
+e)	✅ Type 1c: Leg Does Not Touch 13 EMA 📊
+  
+•	📝 Rules:
+o	The first leg remains entirely above (buy) or below (sell) the 13 EMA.
+o	The second leg closes back inside the 13 EMA and confirms with a candlestick rejection pattern (e.g., Railroad Tracks, COW).
+•	📍 Optimal Location:
+o	Near session HOD/LOD, targeting liquidity sweeps before a reversal.
+•	🎯 Use Case:
+o	Effective for trending markets where the 13 EMA acts as a dynamic resistance/support level.
+f)	✴️ Dynamic EMA Interaction 📊
+•	The 13 EMA serves as a critical dynamic resistance/support.
+•	Both legs interact with or remain in proximity to the 13 EMA.
+g)	✴️ Rejection Candlestick Patterns 🕯️
+•	Patterns like Morning/Evening Stars, Railroad Tracks, and COW confirm second-leg entries.
+•	The apex forms after a clean rejection from liquidity points.
+h)	✴️ Session Timing Alignment ⏰
+•	Found during session extremes:
+o	London Session: ⏰ 3:30 AM - 5:30 AM EST.
+o	New York Session: ⏰ 9:30 AM - 11:00 AM EST.
+o	Brinks Trade Timing: ⏰ 9:45 PM, 3:45 AM, 9:45 AM EST.
+i)	✴️ Liquidity Targeting 💧
+•	Entries often coincide with liquidity sweeps, targeting PSH/PSL, PDH/PDL, PWH/PWL, PMH/PML, PYH/PYL or 5 day averaged ADR levels.
+________________________________________
+➡️ Type 2: Asian 00 bounce and reverse trades
+                               
+j)	✅ Type 2a: Symmetrical Legs ↔️
+•	📝 Rules:
+o	Both legs of the M or W pattern are symmetrical in length and structure.
+o	Apex forms with a clear rejection candlestick pattern.
+•	📍 Optimal Location:
+o	Found near session High of Day (HOD) or Low of Day (LOD).
+o	Often forms after a liquidity sweep during session extremes.
+•	🎯 Use Case:
+o	Ideal for reversals when price forms a clear double top/bottom structure.
+k)	✅ Type 2b: Extended Second Leg 📏
+•	📝 Rules:
+o	The second leg is extended further than the first leg.
+o	Apex forms with a candlestick rejection pattern (e.g., Railroad Tracks, Morning/Evening Star).
+•	📍 Optimal Location:
+o	Found near HOD/LOD, HOW/LOW or 5 day averaged ADR levels.
+•	🎯 Use Case:
+o	Effective for trades during Brinks Timing or after a large liquidity sweep.
+l)	✅ Type 2c: Pattern at Key EMA Levels 📊
+•	📝 Rules:
+o	The pattern forms directly at significant EMA levels (e.g., 13, 50, or 200 EMA).
+o	Both legs interact with the EMA, with the second leg closing above/below the EMA.
+•	📍 Optimal Location:
+o	Commonly forms at session highs/lows or during pullbacks to EMAs after a trend.
+•	🎯 Use Case:
+o	Ideal for trend continuation or reversal setups during volatile sessions.
+🌟 Key Features
+m)	✴️ Apex Formation 📌
+•	The apex is where both legs meet and the reversal begins.
+•	Confirmed by a rejection candlestick pattern (e.g., Morning/Evening Star, Railroad Tracks).
+n)	✴️ Dynamic EMA Interaction 📈
+•	Patterns often respect key EMAs (13, 50, 200), adding confluence to entries.
+•	The second leg usually aligns with an EMA bounce or rejection.
+o)	✴️ Session Timing Alignment ⏰
+•	Type 2 trades align with session timings:
+o	London Session: 3:30 AM to 5:30 AM EST.
+o	New York Session: 9:30 AM to 11:00 AM EST.
+o	Brinks Trade Timing: 9:45 PM, 3:45 AM, 9:45 AM EST.
+✴️ Liquidity Targeting 💧
+•	Patterns often sweep session highs/lows or key levels like HOD/LOD,HOW,LOW,PWH,PWL.
+•	Entry is triggered at liquidity points with reversal patterns
+📊 Visual Guide
+Example of Type 2a (Symmetrical Legs):
+1.	First Leg: Price moves into a key level, respecting the EMA.
+2.	Apex Formation: A rejection candlestick forms, signaling a reversal.
+3.	Second Leg: Price retraces symmetrically.
+4.	Entry: Triggered near the apex on confirmation of candlestick.
+________________________________________
+🛠 Execution Strategy
+1.	🔍 Identify Setup:
+o	Look for symmetrical or extended leg formations at session highs/lows or key EMA levels.
+2.	🎯 Entry Point:
+o	Enter at the apex after candlestick confirmation.
+o	Use pending orders if price action is volatile.
+3.	📏 Risk Management:
+o	Stop Loss: Place above/below the apex structure.
+o	Take Profit: Target a 2:1 reward-to-risk ratio.
+4.	⏰ Timing:
+o	Monitor during session extremes:
+	London Session: 3:30 AM - 5:30 AM EST.
+	New York Session: 9:30 AM - 11:00 AM EST.
+	Brinks Timing: 9:45 PM, 3:45 AM, 9:45 AM EST.
+________________________________________
+📌 Summary
+Type 2 trades are versatile setups that leverage:
+•	Symmetrical or extended leg formations.
+•	EMA confluence.
+•	Session timing precision and liquidity sweeps for optimal reversals or continuation trades.
+💥 Type 3: Asian 50 Bounce and reverse trades
+                              
+p)	✅ Type 3a: 50 EMA Bounce 📈
+•	📝 Rules:
+o	Price pulls back to the 50 EMA after a clear trend or breakout.
+o	Entry is confirmed with a candlestick rejection pattern (e.g., Railroad Tracks, Pin Bar).
+•	📍 Optimal Location:
+o	Occurs during a pullback in a trending market, typically around session highs/lows or continuation points.
+•	🎯 Use Case:
+o	Suitable for trend continuation trades after a significant breakout.
+q)	✅ Type 3b: Asian Range Bounce 🌍
+•	📝 Rules:
+o	Price respects the 50% level of the Asian session range or bounces off the range high/low.
+o	Entry is confirmed with candlestick patterns.
+•	📍 Optimal Location:
+o	Asian high/low or the mid-level (50%) of the Asian range.
+•	🎯 Use Case:
+o	Works well during London and New York sessions when price retraces to the Asian range boundary.
+r)	✅ Type 3c: ADR/Key Level Rejection 📏
+•	📝 Rules:
+o	Price rejects significant levels like ADR (Average Daily Range), PDH/PDL, or YH/YL.
+o	Entry occurs after a candlestick rejection pattern confirms the level (e.g., Morning/Evening Star).
+•	📍 Optimal Location:
+o	ADR high/low, PDH/PDL,
+•	🎯 Use Case:
+o	Effective for continuation trades where price aligns with the trend after rejecting a key level
+🌟 Key Features
+s)	✴️ Bounce Points 🌀
+•	Type 3 trades rely on price interacting with a key level (e.g., 50 EMA, Asian range, ADR).
+•	The level serves as a dynamic support/resistance for continuation setups.
+t)	✴️ Dynamic EMA Interaction 📈
+•	The 50 EMA plays a pivotal role in confirming trend direction and retracement zones.
+•	Rejection patterns form at the EMA, signaling entry points.
+u)	✴️ Session Timing Alignment ⏰
+•	Type 3 trades align with:
+o	London Session: 3:30 AM to 5:30 AM EST.
+o	New York Session: 9:30 AM to 11:00 AM EST.
+o	Brinks Trade Timing: 9:45 PM, 3:45 AM, 9:45 AM EST.
+v)	✴️ Liquidity Targeting 💧
+•	Focuses on price sweeps at session highs/lows or rejection points within the ADR boundary.
+________________________________________
+📊 Visual Guide
+Example of Type 3a (50 EMA Bounce):
+1.	Trend Established: Price moves strongly in one direction, pulling away from the 50 EMA.
+2.	Pullback: Price retraces and touches the 50 EMA.
+3.	Rejection: A candlestick rejection pattern forms in the vacinity the EMA.
+4.	Entry: Confirmed by candlestick closure or patterns. Ect Railroad tracks, cord of woods, evening/morning star formation ect.
+🛠 Execution Strategy
+1.	🔍 Identify Setup:
+o	Look for price pulling back to a key level, such as the 50 EMA, Asian range boundary, or ADR high/low.
+o	Confirm with candlestick patterns.
+2.	🎯 Entry Point:
+o	Enter on the close of a rejection candle at the key level (e.g., Pin Bar, Railroad Tracks).
+o	Use pending orders at the EMA or range levels if price action is volatile.
+3.	📏 Risk Management:
+o	Stop Loss: Place above/below the rejection point or EMA.
+o	Take Profit: Target a 2:1 reward-to-risk ratio or use ADR boundaries for exits.
+4.	⏰ Timing:
+o	Focus on London and New York session extremes.
+o	Incorporate Brinks Trade timing for optimal setups.
+________________________________________
+📌 Summary
+Type 3 trades are trend continuation setups that capitalize on:
+•	Key bounce points like the 50 EMA, Asian range boundaries, or ADR extremes.
+•	Candlestick confirmation patterns for precise entries.
+________________________________________
+💥 Type 4: Breakout, bounce off Asian 00 then continuation trades
+w)	✅ Type 4a: 50 EMA Continuation 📈
+•	📝 Rules:
+o	Price breaks out strongly from a consolidation or range.
+o	Retraces to the 50 EMA, respecting it as dynamic support/resistance.
+o	Confirmation: Rejection candlestick pattern at the EMA.
+•	📍 Optimal Location:
+o	Mid-session retracements during London or New York sessions.
+o	Typically found after the initial session breakout.
+•	🎯 Use Case:
+o	Ideal for trend continuation trades where the 50 EMA aligns with session momentum.
+________________________________________
+x)	✅ Type 4b: Breakout Pullback 💥
+•	📝 Rules:
+o	Price breaks out of a significant level (e.g., PDH, PDL, Asian high/low, or ADR boundary).
+o	Retraces to test the breakout level, forming a rejection candlestick pattern.
+•	📍 Optimal Location:
+o	Breakouts from key levels, including PDH/PDL, ADR, YH/YL, or session extremes.
+•	🎯 Use Case:
+o	Effective for trades during Brinks Timing or after the London Open breakout.
+________________________________________
+y)	✅ Type 4c: Trend Continuation with 200 EMA 🔄
+•	📝 Rules:
+o	Price trends strongly above/below the 200 EMA, confirming long-term momentum.
+o	Retraces to the EMA or consolidates before continuing in the direction of the trend.
+o	Confirmation: Candlestick pattern at the 200 EMA.
+•	📍 Optimal Location:
+o	Found during trending markets at mid-session or after a key breakout.
+•	🎯 Use Case:
+o	Suitable for higher timeframe confluence or major trend continuation setups.
+________________________________________
+🌟 Key Features
+z)	✴️ Breakout and Retracement 📊
+•	Type 4 trades capitalize on breakouts followed by a retracement to confirm the move.
+•	The retracement often aligns with a key EMA (50 or 200) or significant level (e.g., PDH/PDL, ADR).
+aa)	✴️ Dynamic EMA Interaction 📈
+•	The 50 EMA and 200 EMA play critical roles in trend direction and retracement zones.
+•	Price often respects these levels before continuing the breakout move.
+bb)	✴️ Session Timing Alignment ⏰
+•	Type 4 trades align with breakout times:
+o	London Session: 3:30 AM to 5:30 AM EST.
+o	New York Session: 9:30 AM to 11:00 AM EST.
+o	Brinks Timing: 9:45 PM, 3:45 AM, 9:45 AM EST.
+cc)	✴️ Liquidity Targeting 💧
+•	Targets liquidity above/below key levels, such as session highs/lows or ADR boundaries.
+•	Confirms breakout or continuation after clearing liquidity pools.
+________________________________________
+📊 Visual Guide
+Example of Type 4a (50 EMA Continuation):
+1.	Breakout: Price breaks out strongly from consolidation or a range.
+2.	Retracement: Price retraces to the 50 EMA.
+3.	Rejection: A candlestick rejection pattern forms at the EMA.
+4.	Entry: Confirmed by candlestick .
+Example of Type 4b (Breakout Pullback):
+1.	Breakout: Price clears a significant level (e.g., PDH/PDL or ADR high/low).
+2.	Retest: Price pulls back to test the breakout level.
+3.	Rejection: Candlestick pattern confirm the continuation move.
+4.	Entry: Triggered on rejection confirmation.
+________________________________________
+🛠 Execution Strategy
+1.	🔍 Identify Setup:
+o	Look for breakout or retracement to a key level, such as the 50 EMA, 200 EMA, PDH/PDL, or ADR boundary.
+o	Confirm with candlestick patterns.
+2.	🎯 Entry Point:
+o	Enter at the rejection point after the retracement or breakout pullback.
+o	Use pending orders at the EMA or breakout levels if price action is volatile.
+3.	📏 Risk Management:
+o	Stop Loss: Place it 10-15 pips above/below the retracement or breakout point.
+o	Take Profit: Target a 2:1 reward-to-risk ratio or use ADR boundaries for exits.
+4.	⏰ Timing:
+o	Focus on session breakout timings:
+	London Open Breakout: 3:30 AM to 5:30 AM EST.
+	New York Continuation: 9:30 AM to 11:00 AM EST.
+	Brinks Trade Timing: 9:45 PM, 3:45 AM, 9:45 AM EST.
+________________________________________
+📌 Summary
+Type 4 trades are highly effective for trend continuation and breakout setups:
+•	Key Features:
+o	Focus on breakouts followed by retracements to confirm momentum.
+o	Utilize dynamic EMA levels (50 and 200) and session timing for precision.
+•	Use Case:
+o	Ideal for traders focusing on continuation patterns with breakout confluence.
+o	Best used during London and New York session volatility.
+6. Advanced Entry Patterns
+M&W Patterns
+RULES: BUY/SELL
+■     First leg does not close above/below 13 but consolidates in a range of 8 or more candles below/above 13 before shifting and close above 13 
+■     TDI confirmation, RSI outside the band (first leg), then it comes back and close above/below MBL crossing signal line.
+   These patterns are mostly found at: 
+    HOD or LOD 
+    Level 3 reversal areas 
+    YH or YL (blue tracer) 
+    After SHH or SHL above/below Asian range 
+    At Emas (water, Mayo, ect) 
+    After ADR has been meet or exceeded
+  
+b)	Half a Batman
+RULES: BUY/SELL: Half Bat, (Type 1&2) – Lev3, 15 min/1hr
+■     Outside structure, first leg 
+■     Price close above/below 13 and come back again to challenge first leg 
+■     Price fails to reach first leg 
+■     Entry trigger, shift candle 
+■     Shift candle needs to close above/below apex(middle of the structure) 
+■     Price close above/below 13 with TDI confirmation.
+  
+
+ID50 / ID50 H1
+                 RULES: ID 50 & ID Safety (Lev1, 15 min) 50/50 Bounce –Lev1&3, 1hr/4hr/Daily
+■     Must have anchor present left 
+■     13/50 cross 
+■     First pull back to 50 
+■     Wait for price to trap at 50 ema 
+■     Entry trigger, RR, COW, morning/evening star at peak of second leg  Or a closing below 13 
+
+  
+M&W off 200 EMA
+         RULES: M/W (off Mayo or Water), Shark Fin Hold the Mayo – L2, 15min/1hr/4hr
+■     Same entries rules applied on M and W patterns 
+■     Second leg close above/below 13 
+ 
+2ND LEG OUT OF ASIA
+RULES:
+■     M Setup with the first leg created inside of Asian session. The pull back happens after midnight
+■     RR, star, cord of words Pattern on second leg, which would be the first leg setup before London or during London session between midnight and 4am 
+■     Setup on 3200, 800 or 200 ema
+ 
+ 
+7. Risk Management
+Effective risk management is crucial for long-term success:
+•	Set stop loss above/below key levels.
+•	Target a 2:1 reward-to-risk ratio.
+•	Avoid trading during night hours to minimize traps.
+
+8. Execution Checklist
+Follow this checklist to ensure disciplined trading:
+1.	Identify the setup type (Type 1, 2, 3, or 4).
+2.	Confirm entry criteria with candlestick patterns and indicators.
+3.	Set stop loss and take profit levels.
+4.	Monitor session timings for optimal entries.
